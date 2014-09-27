@@ -1,9 +1,5 @@
 'use strict';
 
-var ess_scripts = document.getElementsByTagName('script');
-var easySocialShareScript = ess_scripts[ess_scripts.length - 1];
-var easySocialSharePath = easySocialShareScript.substring(0, easySocialShareScript.lastIndexOf('/'));
-
 angular.module('td.easySocialShare', [])
 .directive('shareLinks', ['$location', function ($location) {
     return {
@@ -55,6 +51,7 @@ angular.module('td.easySocialShare', [])
             });
             scope.shareLinks = shareLinks; 
 
-        }
+        },
+        template: '<a ng-repeat="link in shareLinks" ng-class="fa fa-{{link.network}} fa-lg" target="_blank" ng-href="{{link.url}}"></a>';
     };
 }]);
