@@ -53,7 +53,7 @@ angular.module('td.easySocialShare', [])
                         shareLinks.push({network: key, url: theLink});
                     }
             });
-
+            scope.shareLinks = shareLinks; 
 
         }
     };
