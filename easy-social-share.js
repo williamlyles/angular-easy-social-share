@@ -3,13 +3,17 @@
 angular.module('td.easySocialShare', [])
   .directive('shareLinks', ['$location', function ($location) {
     return {
+      scope: {
+        shareLinks: '@',
+        shareTitle: '@'
+      },
       link: function (scope, elem, attrs) {
         var i,
             sites = ['twitter', 'facebook', 'linkedin', 'google-plus', 'reddit'],
             theLink,
-            links = attrs.shareLinks.toLowerCase().split(','),
+            links = scope.shareLinks.toLowerCase().split(','),
             pageLink = encodeURIComponent($location.absUrl()),
-            pageTitle = attrs.shareTitle,
+            pageTitle = scope.shareTitle,
             pageTitleUri = encodeURIComponent(pageTitle),
             shareLinks = [],
             square = '';
