@@ -52,6 +52,6 @@ angular.module('td.easySocialShare', [])
             scope.shareLinks = shareLinks; 
 
         },
-        template: '<a ng-repeat="link in shareLinks" ng-class="fa fa-{{link.network}} fa-lg" target="_blank" ng-href="{{link.url}}"></a>';
+        template: '<a ng-repeat="link in shareLinks" ng-class="fa fa-{{link.network}} fa-lg" target="_blank" ng-href="{{link.url}}"></a>'
     };
 }]);
