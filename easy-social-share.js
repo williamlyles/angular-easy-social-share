@@ -4,17 +4,17 @@ angular.module('td.easySocialShare', [])
 .directive('shareLinks', ['$location', function ($location) {
     return {
         scope: {
-        shareLinks: '@',
-        shareTitle: '@'
+            shareLinks: '@',
+            shareTitle: '@'
         },
         link: function (scope, elem, attrs) {
             var i,
             sites = ['twitter', 'facebook', 'linkedin', 'google-plus', 'reddit'],
             theLink,
             links = scope.shareLinks.toLowerCase().split(','),
-            pageLink = encodeURIComponent($location.absUrl()),
+            scope.pageLink = encodeURIComponent($location.absUrl()),
             pageTitle = scope.shareTitle,
-            pageTitleUri = encodeURIComponent(pageTitle),
+            scope.pageTitleUri = encodeURIComponent(pageTitle),
             shareLinks = [],
             square = '';
 
@@ -30,7 +30,7 @@ angular.module('td.easySocialShare', [])
                     switch (key) {
                         case 'twitter':
                             theLink = { url: 'http://twitter.com/intent/tweet',
-                                        options: {'text': pageTitleUri + '%20' + pageLink}};
+l                                       options: {'text': scope.pageTitleUri + '%20' + pageLink}};
                         break;
                         case 'facebook':
                             theLink = { url:'http://facebook.com/sharer.php',
@@ -40,7 +40,7 @@ angular.module('td.easySocialShare', [])
                             theLink = { url: 'http://www.linkedin.com/shareArticle',
                                         options:{    'mini':'true',
                                                      'url':'pageLink',
-                                                     'title':pageTitleUri}
+                                                     'title':scope.pageTitleUri}
                                         };
                         break;
                         case 'google-plus':
@@ -49,7 +49,7 @@ angular.module('td.easySocialShare', [])
                         break;
                         case 'reddit':
                             theLink = { url: 'http://reddit.com/submit',
-                                        options: {'url':pageLink, 'title':pageTitleUri}};
+                                        options: {'url':pageLink, 'title':scope.pageTitleUri}};
                         break;
                     }
 
@@ -58,8 +58,16 @@ angular.module('td.easySocialShare', [])
                     }
             });
             scope.shareLinks = shareLinks; 
+        
+            scope.buildUrl = function(link){
+                var url = link.url + '?';
+                for(var key in link.options){
+                    url += key + '=' + link.options[key] + '&';
+                }                
+                return url;
+            }
 
         },
-        template: '<a ng-repeat="link in shareLinks" ng-class="fa fa-{{link.network}} fa-lg" target="_blank" ng-href="{{link.url}}"></a>'
+        template: '<a ng-repeat="link in shareLinks" ng-class="fa fa-{{link.network}} fa-lg" target="_blank" ng-href="{{buildUrl(link)}}"></a>'
     };
 }]);
