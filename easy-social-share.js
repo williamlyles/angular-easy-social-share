@@ -70,6 +70,6 @@ angular.module('td.easySocialShare', [])
             }
 
         },
-        template: '<a ng-repeat="link in shareLinks" ng-class="fa fa-{{link.network}} fa-lg" target="_blank" ng-href="{{buildUrl(link)}}"></a>'
+        template: '<a ng-repeat="link in shareLinks track by $index" ng-class="fa fa-{{link.network}} fa-lg" target="_blank" ng-href="{{buildUrl(link)}}"></a>'
     };
 }]);
