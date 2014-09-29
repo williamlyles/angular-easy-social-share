@@ -29,19 +29,27 @@ angular.module('td.easySocialShare', [])
 
                     switch (key) {
                         case 'twitter':
-                            theLink = 'http://twitter.com/intent/tweet?text=' + pageTitleUri + '%20' + pageLink;
+                            theLink = { url: 'http://twitter.com/intent/tweet',
+                                        options: {'text': pageTitleUri + '%20' + pageLink}};
                         break;
                         case 'facebook':
-                            theLink = 'http://facebook.com/sharer.php?u=' + pageLink;
+                            theLink = { url:'http://facebook.com/sharer.php',
+                                        options:{'u': pageLink}};
                         break;
                         case 'linkedin':
-                            theLink = 'http://www.linkedin.com/shareArticle?mini=true&url=' + pageLink + '&title=' + pageTitleUri;
+                            theLink = { url: 'http://www.linkedin.com/shareArticle',
+                                        options:{    'mini':'true',
+                                                     'url':'pageLink',
+                                                     'title':pageTitleUri}
+                                        };
                         break;
                         case 'google-plus':
-                            theLink = 'https://plus.google.com/share?url=' + pageLink;
+                            theLink = { url: 'https://plus.google.com/share',
+                                        options: {url:pageLink}};
                         break;
                         case 'reddit':
-                            theLink = 'http://reddit.com/submit?url=' + pageLink  + '&title=' + pageTitleUri;
+                            theLink = { url: 'http://reddit.com/submit',
+                                        options: {'url':pageLink, 'title':pageTitleUri}};
                         break;
                     }
 
