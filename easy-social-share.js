@@ -32,7 +32,7 @@ angular.module('td.easySocialShare', [])
                     switch (key) {
                         case 'twitter':
                             theLink = { url: 'http://twitter.com/intent/tweet',
-l                                       options: {'text': scope.pageTitleUri + '%20' + pageLink}};
+                                       options: {'text': scope.pageTitleUri + '%20' + pageLink}};
                         break;
                         case 'facebook':
                             theLink = { url:'http://facebook.com/sharer.php',
