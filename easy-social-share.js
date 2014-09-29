@@ -12,13 +12,15 @@ angular.module('td.easySocialShare', [])
             sites = ['twitter', 'facebook', 'linkedin', 'google-plus', 'reddit'],
             theLink,
             links = scope.shareLinks.toLowerCase().split(','),
-            scope.pageLink = encodeURIComponent($location.absUrl()),
             pageTitle = scope.shareTitle,
-            scope.pageTitleUri = encodeURIComponent(pageTitle),
             shareLinks = [],
             square = '';
 
+
+            
+            scope.pageLink = encodeURIComponent($location.absUrl());
             elem.addClass('td-easy-social-share');
+            scope.pageTitleUri = encodeURIComponent(pageTitle);
 
             // check if square icon specified
             square = (attrs.shareSquare && attrs.shareSquare.toString() === 'true') ? '-square' : '';
