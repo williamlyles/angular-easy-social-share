@@ -59,7 +59,7 @@ angular.module('td.easySocialShare', [])
                         shareLinks.push({network: key, url: theLink});
                     }
             });
-            scope.shareLinks = shareLinks; 
+            scope.socialLinks = shareLinks; 
         
             scope.buildUrl = function(link){
                 var url = link.url + '?';
@@ -70,6 +70,6 @@ angular.module('td.easySocialShare', [])
             }
 
         },
-        template: '<a ng-repeat="link in shareLinks track by $index" ng-class="\'fa fa-lg fa-\'+link.network"  target="_blank" ng-href="{{buildUrl(link)}}"></a>'
+        template: '<a ng-repeat="link in socialLinks" ng-class="\'fa fa-lg fa-\'+link.network"  target="_blank" ng-href="{{buildUrl(link)}}"></a>'
     };
 }]);
